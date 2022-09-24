@@ -1,9 +1,13 @@
 var btn = document.getElementsByClassName("btn");
 var spanNumber = document.getElementById("spanNumber");
-var fruitIn = document.getElementById("fruitIn");
+var fruitIn = document.getElementById("textIn");
 const addToCart = document.querySelector("#addToCart");
 var items = document.getElementsByTagName("li");
 var itemList = document.querySelector("#addLi");
+
+const emptyCartMessage = document.createElement("p");
+emptyCartMessage.innerHTML = "Your cart is empty.";
+addToCart.appendChild(emptyCartMessage);
 
 for (let i = 0; i < btn.length; i++) {
   btn[i].addEventListener("click", (e) => {
@@ -14,8 +18,8 @@ for (let i = 0; i < btn.length; i++) {
     const buttonRemove = document.createElement("button");
     cart.classList.add("cartLi");
     buttonRemove.className = "remove";
-    if (cart === fruitIn.value) {
-      cart.appendChild(document.createTextNode(`${fruitIn.value}`));
+    if (cart === textIn.value) {
+      cart.appendChild(document.createTextNode(`${textIn.value}`));
     } else {
       cart.appendChild(
         document.createTextNode(
@@ -23,44 +27,34 @@ for (let i = 0; i < btn.length; i++) {
         )
       );
     }
-    cart.appendChild(document.createTextNode(`${fruitIn.value}`));
+    cart.appendChild(document.createTextNode(`${textIn.value}`));
     buttonRemove.appendChild(document.createTextNode("Remove"));
 
     cart.appendChild(buttonRemove);
     addToCart.appendChild(cart);
-    fruitIn.value = "";
+    emptyCartMessage.className = "hide-empty-cart";
+    textIn.value = "";
   });
 }
 // btn.addEventListener("click", addList);
 itemList.addEventListener("click", removeItem);
-addToCart.addEventListener("click", removeItem2);
+addToCart.addEventListener("click", removeItem);
 
 function removeItem(e) {
-  //   items;
   if (e.target.classList.contains("remove")) {
     if (
       confirm(
-        `Are you sure to delete ${e.target.parentElement.firstChild.textContent.trim()}`
+        `Are you sure to delete "${e.target.parentElement.firstChild.wholeText.trim()}" from your cart`
       )
     ) {
-      var li = e.target.parentElement;
-      itemList.removeChild(li);
+      const li = e.target.parentNode;
+      const ol = li.parentNode;
+      ol.removeChild(li);
       decreaseCartNumbers();
-    }
-  }
-}
-
-function removeItem2(e) {
-  items;
-  if (e.target.classList.contains("remove")) {
-    if (
-      confirm(
-        `Are you sure to delete in cart ${e.target.parentElement.firstChild.wholeText.trim()}`
-      )
-    ) {
-      var li = e.target.parentElement;
-      addToCart.removeChild(li);
-      decreaseCartNumbers();
+      const currentCartItems = document.getElementsByClassName("cartLi");
+      if (currentCartItems.length <= 0) {
+        emptyCartMessage.classList.remove("hide-empty-cart");
+      }
     }
   }
 }
