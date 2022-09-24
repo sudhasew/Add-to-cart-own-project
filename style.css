@@ -9,7 +9,7 @@ body {
   width: 500px;
   padding: 20px;
   border: 2px solid black;
-  margin: 100px auto;
+  margin: 20px;
 }
 
 /* .container {
@@ -25,14 +25,30 @@ body {
 
 #addToCart {
   position: absolute;
-  top: 0;
-  right: 0;
-  margin: 10px 20px;
+  top: 10px;
+  right: 10px;
   border: none;
   background: blue;
   color: white;
-  padding: 5px 10px;
   cursor: pointer;
+  text-align: left;
+  width: 150px;
+}
+
+p {
+  text-align: center;
+  font-size: 15px;
+}
+
+#delete {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  border: none;
+  background: blue;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
 }
 
 .btn {
@@ -43,7 +59,7 @@ body {
 
 #addLi {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-direction: column;
 }
 
@@ -51,6 +67,7 @@ body {
   display: flex;
   justify-content: space-between;
   margin: 10px 10px 0 0;
+  visibility: visible;
 }
 
 .listItem {
@@ -58,6 +75,10 @@ body {
   list-style-type: none;
   display: flex;
   justify-content: space-between;
+}
+
+p {
+  margin-top: 20px;
 }
 
 .remove {
@@ -83,4 +104,8 @@ input {
 
 .hide-empty-cart {
   display: none;
+}
+
+button:active {
+  background-color: red;
 }
