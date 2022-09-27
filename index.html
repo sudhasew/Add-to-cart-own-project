@@ -14,29 +14,26 @@
   <body>
     <div class="container">
       <div class="input-container">
-        <input type="text" id="textIn" placeholder="enter input here" />
-
+        <div class="inputButton">
+          <input type="text" id="textIn" placeholder="enter input here" />
+          <button id="specialBtn" class="btn">Add to cart</button>
+        </div>
         <ul id="addLi">
           <li class="listItem">
             Fruits
             <button class="btn">Add to cart</button>
-            <button class="remove">Remove</button>
           </li>
           <li class="listItem">
-            Veggies <button class="btn">Add to cart</button>
-            <button class="remove">Remove</button>
+            Vegetables <button class="btn">Add to cart</button>
           </li>
           <li class="listItem">
             Sweets <button class="btn">Add to cart</button>
-            <button class="remove">Remove</button>
           </li>
           <li class="listItem">
             Pizzas
             <button class="btn">Add to cart</button>
-            <button class="remove">Remove</button>
           </li>
         </ul>
-        <button class="btn">Add to cart</button>
       </div>
       <div>
         <button id="addToCart">
@@ -50,9 +47,6 @@
           >
             0
           </span>
-        </button>
-        <button id="delete">
-          <i class="fa fa-trash"></i>
         </button>
       </div>
     </div>
